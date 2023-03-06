@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 22/03/2021 06:50:53 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="segundo.modelos.Publicaciones" table="publicaciones" catalog="red_social" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="visible" type="java.lang.Boolean">
+            <column name="visible" />
+        </property>
+        <property name="texto" type="string">
+            <column name="texto" length="50" />
+        </property>
+        <property name="hora" type="string">
+            <column name="hora" length="50" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" />
+        </property>
+        <set name="usuarioses" table="usuarios" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="publicacion_id" />
+            </key>
+            <one-to-many class="segundo.modelos.Usuarios" />
+        </set>
+    </class>
+</hibernate-mapping>
